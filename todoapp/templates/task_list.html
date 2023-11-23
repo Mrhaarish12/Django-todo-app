@@ -4,10 +4,10 @@
 
 <div class="todo-container">
   <div class="todo-search">
-    <form action="" method="POST">
+    <form action="" method="post">
      
-      <!-- {% comment %}  -->
-      <input type="text" placeholder="Enter Todo" /> {% endcomment %}
+    {% csrf_token %}
+      <input type="text" placeholder="Enter Todo" name="task" required/> 
       <!-- {% csrf_token %}
       {{form.title}} -->
       <button>Add</button>
@@ -22,17 +22,17 @@
     <div class="todo-list-item">
       <div class="task">
         <input type="checkbox" />
-        <p>{{task.title}}</p>
+        <p>todo item</p>
       </div>
 
       <div class="btn-container">
         <div class="edit">
-          <a href="{% url 'task-update' task.id %}">
+          <a href="">
             <i class="fa-solid fa-pen-to-square"></i>
           </a>
         </div>
         <div class="del">
-          <a href="{% url 'task-delete' task.id %}">
+          <a href="">
             <i class="fa-solid fa-trash-can"></i>
           </a>
         </div>
@@ -47,12 +47,12 @@
   
         <div class="btn-container">
           <div class="edit">
-            <a href="{% url 'task-update' task.id %}">
+            <a href="">
               <i class="fa-solid fa-pen-to-square"></i>
             </a>
           </div>
           <div class="del">
-            <a href="{% url 'task-delete' task.id %}">
+            <a href="">
               <i class="fa-solid fa-trash-can"></i>
             </a>
           </div>
