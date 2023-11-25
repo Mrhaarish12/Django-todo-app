@@ -28,5 +28,7 @@ def task_delete(request, pk):
     task = Task.objects.get(id=pk)
     if request.method == 'POST':
         task.delete()
-    context = {}
+        return redirect("task-list")     
+
+    context = {"task": task}
     return render(request, "task_delete.html", context)
