@@ -13,10 +13,20 @@ def task_list(request):
     context = {"tasks": tasks, "form": form}
     return render(request, "task_list.html", context)
 
-def task_update(request):
-    context = {}
+def task_update(request, pk):
+    task = Task.objects.get(id=pk)
+    form = TaskForm(instance=task)
+    if request.method == 'POST':
+        form = TaskForm(request.POST,instance=task)
+        if form.is_valid():
+            form.save()
+            return redirect("task-list")     
+    context = {"form": form}
     return render(request, "task_list.html", context)
 
-def task_delete(request):
+def task_delete(request, pk):
+    task = Task.objects.get(id=pk)
+    if request.method == 'POST':
+        task.delete()
     context = {}
     return render(request, "task_delete.html", context)
