@@ -6,8 +6,9 @@
   <div class="todo-search">
     <form action="" method="post">
      
-      <!-- {% csrf_token %} -->
+      {% csrf_token %}
       <!-- <input type="text" placeholder="Enter Todo" name="task" required/>  -->
+      
       {{form.title}}
       <button>Add</button>
     </form>
